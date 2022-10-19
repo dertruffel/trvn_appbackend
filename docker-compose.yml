@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+  trvn-postgres:
+    image: postgres:10-alpine
+    container_name: 'trvn-postgres'
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+      POSTGRES_DB: 'trvn'
+    labels:
+      application: 'trvn-postgres'
+    ports:
+      - '5432:5432'
+    expose:
+      - '5432'
+
+  trvn-django:
+    build:
+      context: ./
+    command: "gunicorn trvn_appbackend.wsgi:application --chdir=src --bind 0.0.0.0:8001 --reload --log-file - "
+    container_name: 'trvn-django'
+    labels:
+      application: 'trvn-django'
+    volumes:
+      - ./:/code
+    ports:
+      - '8001:8001'
+    depends_on:
+      - trvn-postgres
+    expose:
+      - '8001'
+    environment: &env
+      DEBUG: 'True'
+      ALLOWED_HOSTS: '*'
+      SECRET_KEY: 'SECRET_KEY'
+      DATABASE_URL: 'postgres://postgres:postgres@trvn-postgres:5432/trvn'
+      REDIS_URL: 'redis://trvn-redis:6379/1'
+
+  trvn-redis:
+    image: redis:latest
+    container_name: 'trvn-redis'
+    labels:
+      application: 'trvn-redis'
+    ports:
+      - '6379:6379'
+    expose:
+      - '6379'
+
+  pgadmin:
+    container_name: 'trvn-pgadmin'
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
