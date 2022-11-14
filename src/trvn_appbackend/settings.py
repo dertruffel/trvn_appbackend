@@ -4,7 +4,6 @@ import dj_database_url
 from decouple import config
 from datetime import timedelta
 from corsheaders.defaults import default_headers
-from django_query_profiler.settings import *
 
 
 # DEBUG = config('DEBUG', default=False, cast=bool)
@@ -31,6 +30,7 @@ INSTALLED_APPS = [
     #local
     'accounts',
     'frontpages',
+    'docs.apps.DocsConfig',
     #
 
     #external
@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'adminsortable2',
     'rest_framework_recursive',
     'drf_multiple_model',
-    'django_query_profiler',
     'drf_spectacular',
     'rest_framework.authtoken',
     #
@@ -60,8 +59,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-if QUERYDEBUG:
-    MIDDLEWARE += ['django_query_profiler.client.middleware.QueryProfilerMiddleware',]
+
 
 ROOT_URLCONF = 'trvn_appbackend.urls'
 
@@ -95,9 +93,7 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
 CORS_ALLOW_CREDENTIALS = True
 
 DATABASES = {'default': dj_database_url.config(conn_max_age=600)}
-if QUERYDEBUG:
-    DATABASES['default']['ENGINE'] = 'django_query_profiler.django.db.backends.postgresql'
-    DJANGO_QUERY_PROFILER_REDIS_HOST = 'trvn-redis'
+
 
 
 

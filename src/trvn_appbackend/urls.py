@@ -13,8 +13,10 @@ api_urlpatterns = [
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('docs/', include('docs.urls')),
     path('api/', include(api_urlpatterns)),
-    path('' , include('frontpages.urls')),
+    path('', include('frontpages.urls')),
+
 ]
 admin.site.site_header = "TRVN Admin"
 admin.site.site_title = "TRVN Admin Portal"
@@ -23,6 +25,3 @@ admin.site.index_title = "Welcome to TRVN Admin Panel"
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += staticfiles_urlpatterns()
-    urlpatterns += [
-        path('django_query_profiler/', include('django_query_profiler.client.urls')),
-    ]
