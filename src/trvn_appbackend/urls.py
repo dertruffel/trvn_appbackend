@@ -5,6 +5,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path, include
 
 api_urlpatterns = [
+    path('accounts/', include('accounts.urls')),
 
 
     ]
@@ -13,6 +14,7 @@ api_urlpatterns = [
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(api_urlpatterns)),
+    path('' , include('frontpages.urls')),
 ]
 admin.site.site_header = "TRVN Admin"
 admin.site.site_title = "TRVN Admin Portal"

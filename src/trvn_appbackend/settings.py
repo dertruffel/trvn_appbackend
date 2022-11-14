@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     #local
-
+    'accounts',
+    'frontpages',
     #
 
     #external
@@ -99,14 +100,7 @@ if QUERYDEBUG:
     DJANGO_QUERY_PROFILER_REDIS_HOST = 'trvn-redis'
 
 
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            'hosts': [config('REDIS_URL')],
-        },
-    },
-}
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -156,7 +150,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'PAGE_SIZE': 10,
-    'EXCEPTION_HANDLER': 'core.exceptions.custom_exception_handler',
     'ORDERING_PARAM': 'ordering',
     'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.AnonRateThrottle',
