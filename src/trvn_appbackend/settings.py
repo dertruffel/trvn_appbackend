@@ -129,8 +129,13 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-MEDIA_URL = config('CDN_HOSTNAME', default='') + '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = config('CDN_HOSTNAME', default='') + '/assets/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'assets')
+
+# add assets route
+STATICFILES_DIRS += (
+    os.path.join(BASE_DIR, 'assets'),
+)
 
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 
