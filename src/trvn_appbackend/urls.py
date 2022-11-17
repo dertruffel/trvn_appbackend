@@ -12,10 +12,10 @@ api_urlpatterns = [
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('docs/', include('docs.urls')),
-    path('api/', include(api_urlpatterns)),
-    path('', include('frontpages.urls')),
+    path('admin/', admin.site.urls, name='admin'),
+    path('docs/', include('docs.urls'), name='docs'),
+    path('api/', include('api.urls'), name='api'),
+    path('', include('frontpages.urls'), name='frontpages'),
 
 ]
 admin.site.site_header = "TRVN Admin"

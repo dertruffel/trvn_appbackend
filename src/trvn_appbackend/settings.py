@@ -30,7 +30,8 @@ INSTALLED_APPS = [
     #local
     'accounts',
     'frontpages',
-    'docs.apps.DocsConfig',
+    'docs',
+    'api',
     #
 
     #external

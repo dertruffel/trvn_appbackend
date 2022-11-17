@@ -36,3 +36,7 @@ def cars(request):
 
 def car_details(request):
     return render(request, 'car-details.html')
+
+def create_car(request):
+    return render(request, 'create-car.html')
+

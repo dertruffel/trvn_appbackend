@@ -26,3 +26,6 @@ class UserLogin(APIView):
             serializer.save()
             return render(request, 'index.html')
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+def UserLoginRender(request):
+    return render(request, 'user_login.html')

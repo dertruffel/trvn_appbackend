@@ -48,7 +48,7 @@ header, nav, section, article, aside, footer, hgroup {
 html, body {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  background-color: #fff;
+  background-color: #161616;
   font-size: 16px;
   -ms-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -71,7 +71,11 @@ ul {
 p {
   font-size: 14px;
   line-height: 25px;
-  color: #7a7a7a;
+  color: #747474;
+}
+
+label {
+  color: #fff;
 }
 
 /* 
@@ -81,7 +85,7 @@ global styles
 */
 html,
 body {
-  background: #fff;
+  background: #161616;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -160,6 +164,28 @@ body {
   background-color: #f9735b;
   color: #fff;
 }
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #edb63b #161616;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #161616;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #edb63b;
+    border-radius: 7px;
+    border: 3px solid #161616;
+  }
 
 
 /* 
@@ -752,14 +778,14 @@ Our Classes
 .tabs-content h4 {
   font-size: 23px;
   font-weight: 700;
-  color: #505050;
+  color: #d3d3d3;
   letter-spacing: 0.5px;
   margin-bottom: 20px;
   margin-top: 30px;
 }
 .tabs-content p {
   font-size: 14px;
-  color: #7a7a7a;
+  color: #d3d3d3;
   margin-bottom: 28px;
 }
 

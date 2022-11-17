@@ -49,6 +49,7 @@
                         <ul class="nav">
                             <li><a href="{% url 'index' %}" class="active">Home</a></li>
                             <li><a href="{% url 'cars' %}">AUTA</a></li>
+                            <li><a href="{% url 'create-car' %}">Dodaj auto</a></li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">FIRMA</a>
 
@@ -62,6 +63,8 @@
                                 </div>
                             </li>
                             <li><a href="{% url 'contact' %}">kontakt</a></li>
+                            <li><a href="{% url 'user_login_render' %}">Zaloguj</a></li>
+                            <li><a href="{% url 'user_register_render' %}">Zarejestruj</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -82,8 +85,8 @@
 
         <div class="video-overlay header-text">
             <div class="caption">
-                <h6>Lorem ipsum dolor sit amet</h6>
-                <h2>Best <em>car dealer</em> in town!</h2>
+                <h6>Motto here</h6>
+                <h2>top 1 <em>car dealer</em> w kraju!</h2>
                 <div class="main-button">
                     <a href="{% url 'contact' %}">Contact Us</a>
                 </div>
