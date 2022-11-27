@@ -8,6 +8,6 @@ router = routers.SimpleRouter()
 
 
 urlpatterns = [
-    path('userregister/', UserRegister.as_view(), name='user_register'),
+    path('userregister/', UserRegister, name='user_register'),
 
 ]

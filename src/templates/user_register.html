@@ -1,27 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-{% load static %}<head> <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDWKVTR22"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+{% extends 'base.html' %}
 
-      gtag('config', 'G-KSDWKVTR22');
-    </script>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-{#user register form for UserRegister apiview#}
+{% block content %}
 <form action="{% url 'user_register' %}" method="post">
-    {% csrf_token %}
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <input type="password" name="password2" placeholder="password2">
-    <input type="submit" value="submit">
-</form>
 
-</body>
-</html>
+    <div class="form-group container text-center">
+
+        {% csrf_token %}
+        <div class="box text-white">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+        {{ form.username.errors }}
+        </div>
+        <div class="box text-white">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        {{ form.email.errors }}
+        </div>
+        <div class="box text-white">
+        {{ form.password1.label_tag }}
+        {{ form.password1 }}
+        {{ form.password1.errors }}
+        </div>
+        <div class="box text-white" >
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+        {{ form.password2.errors }}
+        </div>
+        <input type="submit" value="submit">
+    </div>
+</form>
+{% endblock %}
