@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
 from accounts.serializers import UserSerializer
 
-from src.accounts.forms import SignUpForm, SignInForm
+from accounts.forms import SignUpForm, SignInForm
 
 
 def UserRegisterRender(request):
