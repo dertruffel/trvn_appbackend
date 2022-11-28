@@ -6,7 +6,7 @@ from api import views as api_views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('addcar/', api_views.AddCar.as_view(), name='addcar'),
+    path('addcar/', api_views.AddCar, name='addcar'),
     path('register/', accounts_views.UserRegisterRender, name='user_register_render'),
     path('registerapi/', accounts_views.UserRegister, name='user_register'),
     path('loginapi/', accounts_views.UserLogin, name='user_login'),
@@ -23,7 +23,7 @@ urlpatterns = [
     path('blog-details/', views.blog_details, name='blog_details'),
     path('team/', views.team, name='team'),
     path('cars/', views.cars, name='cars'),
-    path('car-details/', views.car_details, name='car_details'),
+    path('car-details/<int:id>/', views.car_details, name='car_details'),
     path('create-car/', views.create_car, name='create-car'),
 
 ]
