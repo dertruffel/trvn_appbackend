@@ -1,4 +1,4 @@
-FROM arm32v7/python:3.9.14-buster
+FROM arm32v7/python:3.9.14-slim-bullseye
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
 WORKDIR /code
@@ -11,7 +11,7 @@ RUN apt-get install  \
     libffi-dev curl cargo -y
 
 RUN pip install --upgrade pip
-
+ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
 RUN pip install --no-cache-dir -r requirements.txt
 
 ADD . /code/
