@@ -1,4 +1,4 @@
-FROM arm32v7/python:3.9.14-buster
+FROM arm32v7/python:3.9.14-slim-bullseye
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
 WORKDIR /code
