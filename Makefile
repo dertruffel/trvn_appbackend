@@ -102,3 +102,17 @@ coverage-html:
 
 lint:
 	@docker exec -t trvn-django /bin/sh -c "cd src && flake8"
+
+
+build-arm:
+	@docker build -f Dockerfile-ARM -t trvn-django:arm .
+
+superuserpre:
+	@docker exec -it trvn-django python src/manage.py createsuperuser --username admin --email email@email.email --password password
+
+
+arm: rm-all build-arm build-pgadmin build-postgres build-redis superuserpre
+	@docker-compose -f docker-compose-ARM.yml up
+
+start-arm:
+	@docker-compose -f docker-compose-ARM.yml up
