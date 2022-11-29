@@ -11,6 +11,8 @@ RUN apt-get install  \
     libffi-dev curl cargo -y
 
 RUN pip install --upgrade pip
+RUN pip install wheel
+RUN pip install Cmake
 ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
 RUN pip install --no-cache-dir -r requirements.txt
 
