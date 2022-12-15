@@ -1,20 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="{% url 'addcar' %}" method="post" enctype="multipart/form-data">
+<form action="{% url 'add-post' %}" method="post" enctype="multipart/form-data">
 
     <div class="form-group container text-center">
 
         {% csrf_token %}
         <div class="box text-white">
-            {{ form.name.label_tag }}
-            {{ form.name }}
-            {{ form.name.errors }}
-        </div>
-        <div class="box text-white">
-            {{ form.price.label_tag }}
-            {{ form.price }}
-            {{ form.price.errors }}
+            {{ form.title.label_tag }}
+            {{ form.title }}
+            {{ form.title.errors }}
         </div>
         <div class="box text-white">
             {{ form.description.label_tag }}
@@ -26,11 +21,7 @@
             {{ form.image }}
             {{ form.image.errors }}
         </div>
-        <div class="box text-white">
-            {{ form.for_sale.label_tag }}
-            {{ form.for_sale }}
-            {{ form.for_sale.errors }}
-        </div>
+
 
 
         <input type="submit" value="submit">
