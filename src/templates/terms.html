@@ -55,22 +55,42 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li><a href="{% url 'index' %}">Home</a></li>
-                            <li><a href="{% url 'cars' %}">AUTA</a></li>
+                            {% if user.is_authenticated %}
+                                <li> Logged in as {{ user.username }}</li>
+                            {% endif %}
+                            <li><a href="{% url 'index' %}" class="active">Home</a></li>
+                            <li><a href="{% url 'cars' %}">DEALER</a></li>
+                            {% if user.is_authenticated %}
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">AKCJE</a>
+                                    <div class="dropdown-menu">
+                                        <a href="{% url 'my-cars' %}">Twoje auta</a>
+                                        <a href="{% url 'create-car' %}">Dodaj auto</a>
+                                        <a href="{% url 'add-post' %}">Dodaj post</a>
+                                    </div>
+                                </li>
+                            {% endif %}
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">FIRMA</a>
-                              
+
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{% %}>O NAS</a>
+                                    <a class="dropdown-item" href="{% url 'about' %}">O NAS</a>
                                     <a class="dropdown-item" href="{% url 'blog' %}">Blog</a>
                                     <a class="dropdown-item" href="{% url 'team' %}">ZALOGA</a>
                                     <a class="dropdown-item" href="{% url 'testimonials' %}">OPINIE</a>
                                     <a class="dropdown-item" href="{% url 'faq' %}">FAQ</a>
-                                    <a class="dropdown-item active" href="{% url 'terms' %}">REGULAMIN WYPOZYCZALNI</a>
+                                    <a class="dropdown-item" href="{% url 'terms' %}">REGULAMIN WYPOZYCZALNI</a>
+									<a class="dropdown-item" href="{% url "calendar" %}">KALENDARZ</a>
                                 </div>
                             </li>
                             <li><a href="{% url 'contact' %}">kontakt</a></li>
-                        </ul>        
+                            {% if not user.is_authenticated %}
+                                <li><a href="{% url 'user_login_render' %}">Zaloguj</a></li>
+                                <li><a href="{% url 'user_register_render' %}">Zarejestruj</a></li>
+                            {% else %}
+                                <li><a href="{% url 'user_logout' %}">Wyloguj</a></li>
+                            {% endif %}
+                        </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>

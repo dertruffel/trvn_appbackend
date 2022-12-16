@@ -29,7 +29,12 @@
     </head>
 
     <body>
-
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
     <!-- ***** Preloader Start ***** -->
     <div id="js-preloader" class="js-preloader">
       <div class="preloader-inner">
@@ -55,9 +60,21 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
+                            {% if user.is_authenticated %}
+                                <li> Logged in as {{ user.username }}</li>
+                            {% endif %}
                             <li><a href="{% url 'index' %}" class="active">Home</a></li>
-                            <li><a href="{% url 'cars' %}">AUTA</a></li>
-                            <li><a href="{% url 'create-car' %}">Dodaj auto</a></li>
+                            <li><a href="{% url 'cars' %}">DEALER</a></li>
+                            {% if user.is_authenticated %}
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">AKCJE</a>
+                                    <div class="dropdown-menu">
+                                        <a href="{% url 'my-cars' %}">Twoje auta</a>
+                                        <a href="{% url 'create-car' %}">Dodaj auto</a>
+                                        <a href="{% url 'add-post' %}">Dodaj post</a>
+                                    </div>
+                                </li>
+                            {% endif %}
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">FIRMA</a>
 
@@ -68,11 +85,16 @@
                                     <a class="dropdown-item" href="{% url 'testimonials' %}">OPINIE</a>
                                     <a class="dropdown-item" href="{% url 'faq' %}">FAQ</a>
                                     <a class="dropdown-item" href="{% url 'terms' %}">REGULAMIN WYPOZYCZALNI</a>
+									<a class="dropdown-item" href="{% url "calendar" %}">KALENDARZ</a>
                                 </div>
                             </li>
                             <li><a href="{% url 'contact' %}">kontakt</a></li>
-                            <li><a href="{% url 'user_login_render' %}">Zaloguj</a></li>
-                            <li><a href="{% url 'user_register_render' %}">Zarejestruj</a></li>
+                            {% if not user.is_authenticated %}
+                                <li><a href="{% url 'user_login_render' %}">Zaloguj</a></li>
+                                <li><a href="{% url 'user_register_render' %}">Zarejestruj</a></li>
+                            {% else %}
+                                <li><a href="{% url 'user_logout' %}">Wyloguj</a></li>
+                            {% endif %}
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -91,7 +113,7 @@
             <source src="assets/images/video.mp4" type="video/mp4" />
         </video>
 
-        <div class="video-overlay header-text">
+        <div class="video-overlay header-text center">
             <div class="caption">
                 {% block content %}
                 {% endblock %}

@@ -48,3 +48,10 @@ class CarForm(ModelForm):
         except Exception as e:
             print(e)
             return None
+
+class ChangeCarPriceForm(ModelForm):
+    price = forms.DecimalField(max_digits=10, decimal_places=2, required=True, error_messages={'required': 'Please enter a price'})
+
+    class Meta:
+        model = Car
+        fields = ('price',)

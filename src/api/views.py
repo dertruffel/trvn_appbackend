@@ -6,8 +6,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from urllib3 import HTTPResponse
 
-from .forms import CarForm, PostForm
+from .forms import CarForm, PostForm, ChangeCarPriceForm
 from .models import Car
+from accounts.models import User
 
 
 @renderer_classes((JSONRenderer, TemplateHTMLRenderer))
@@ -58,6 +59,47 @@ def BuyCar(request, id):
             return render(request, 'index.html')
         else:
             return render(request, 'index.html', {'error': 'Not enough money'})
+    except Exception as e:
+        print(e)
+        return render(request, 'index.html', {'error': 'Something went wrong'})
+
+
+@renderer_classes((JSONRenderer, TemplateHTMLRenderer))
+def ChangeOnSaleCar(request, id):
+    try:
+        user = User.objects.filter(id=request.user.id).first()
+        car = Car.objects.get(id=id)
+        if car.owner == user:
+            if car.for_sale:
+                car.for_sale = False
+            else:
+                car.for_sale = True
+            car.save()
+            return render(request, 'my_cars.html', {'cars': Car.objects.filter(owner=user).order_by('-created_at')})
+        else:
+            return render(request, 'my_cars.html', {'error': 'Not your car'},{'cars': Car.objects.filter(owner=user).order_by('-created_at')})
+    except Exception as e:
+        print(e)
+        return render(request, 'index.html', {'error': 'Something went wrong'})
+
+@renderer_classes((JSONRenderer, TemplateHTMLRenderer))
+def ChangeCarPrice(request, carid):
+    try:
+        user = User.objects.filter(id=request.user.id).first()
+        print(carid)
+        car = Car.objects.get(id=carid)
+        print(carid)
+        if car.owner == user:
+            data = ChangeCarPriceForm(request.POST)
+            if data.is_valid():
+                car.price = data.cleaned_data['price']
+                car.save()
+                return render(request, 'my_cars.html', {'cars': Car.objects.filter(owner=user).order_by('-created_at')})
+            else:
+                print(data.errors)
+                return render(request, 'my_cars.html', {'form': data},{'cars': Car.objects.filter(owner=user).order_by('-created_at')})
+        else:
+            return render(request, 'my_cars.html', {'error': 'Not your car'},{'cars': Car.objects.filter(owner=user).order_by('-created_at')})
     except Exception as e:
         print(e)
         return render(request, 'index.html', {'error': 'Something went wrong'})

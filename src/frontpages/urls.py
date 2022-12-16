@@ -1,8 +1,10 @@
+from django.conf.urls import url
 from django.urls import path, include
 
 from frontpages import views
 from accounts import views as accounts_views
 from api import views as api_views
+from cal import views as cal_views
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -29,7 +31,10 @@ urlpatterns = [
     path('car-details/<int:id>/', views.car_details, name='car_details'),
     path('create-car/', views.create_car, name='create-car'),
     path('buy-car/<int:id>/', api_views.BuyCar, name='buy-car'),
-
+    path('my-cars/', views.my_cars, name='my-cars'),
+    path('sell-car/<int:id>/', api_views.ChangeOnSaleCar, name='sell-car'),
+    path('change-car-price/<int:carid>/', api_views.ChangeCarPrice, name='change_car_price'),
+    url(r'calendar/$', cal_views.CalendarView.as_view(), name='calendar'),
 ]
 
 

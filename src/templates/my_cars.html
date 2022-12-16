@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="section-heading">
-                        <h2>Featured <em>Cars</em></h2>
+                        <h2>Twoje <em>Auta</em></h2>
                         <img src="assets/images/line-dec.png" alt="">
                     </div>
                 </div>
@@ -24,13 +24,22 @@
                                 {% endif %}
                             </div>
                             <div class="down-content">
-                                <span>{{ car.price }}</span>
-
+{#                                <span>{{ car.price }}</span>#}
+{#                            maxe text larger#}
+                                <h4>{{ car.price }}</h4>
+                                <form action="{% url 'change_car_price' car.id %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="text" name="price" placeholder="Nowa cena">
+                                    <input type="submit" value="Zmień cenę">
                                 <h4>{{ car.name }}</h4>
                                 <p>{{ car.description }}</p>
                                 <ul class="social-icons">
                                     <li><a href="{% url 'car_details' car.id %}">Szczegóły</a></li>
-                                    <li><a href="{% url 'buy-car' car.id %}">Kup za {{ car.price }}</a></li>
+                                    {% if car.for_sale %}
+                                        <li><a href="{% url 'sell-car' car.id %}">Anuluj sprzedaż</a></li>
+                                    {% else %}
+                                        <li><a href="{% url 'sell-car' car.id %}">Sprzedaj</a></li>
+                                    {% endif %}
                                 </ul>
                             </div>
                         </div>
