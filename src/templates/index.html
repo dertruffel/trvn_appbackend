@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+{% load embed_video_tags %}
   <head> <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDWKVTR22"></script>
     <script>
@@ -110,7 +111,6 @@
 
         <div class="video-overlay header-text">
             <div class="caption">
-                <h6>Motto here</h6>
                 <h2>top 1 <em>car dealer</em> w kraju!</h2>
                 <div class="main-button">
                     <a href="{% url 'contact' %}">Contact Us</a>
@@ -137,9 +137,9 @@
                         <div class="trainer-item">
                             <div class="image-thumb">
                                 {% if car.image %}
-                                <img src="{{ car.image.url }}" alt="">
+                                <img src="{{ car.image.url }}" alt="" style="border-radius: 50%;">
                                 {% else %}
-                                <img src="assets/images/product-1-720x480.jpg" alt="">
+                                <img src="assets/images/product-1-720x480.jpg" alt="" style="border-radius: 50%;">
                                 {% endif %}
                             </div>
                             <div class="down-content">
@@ -159,7 +159,7 @@
             <br>
 
             <div class="main-button text-center">
-                <a href="{% url 'cars' %}">View Cars</a>
+                <a href="{% url 'cars' %}">Zobacz auta</a>
             </div>
         </div>
         </div>
@@ -187,7 +187,7 @@
                                 {% if post.image %}
                                 <img src="{{ post.image.url }}" alt="">
                                 {% else %}
-                                <img src="assets/images/product-1-720x480.jpg" alt="">
+                                <img src="assets/images/product-1-720x480.jpg" alt="" style="border-radius: 50%;">
                                 {% endif %}
                             </div>
                             <div class="down-content">
@@ -228,7 +228,8 @@
                         <h2>Read <em>About Us</em></h2>
                         <img src="assets/images/line-dec.png" alt="">
                         <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
-                    </div>
+
+                        <iframe width="480" height="360" src="https://www.youtube.com/embed/jlqCuHiTst8" title="Grello Hotlap Nordschleife | KÜS Manthey-Racing | NLS 5 Nürburgring" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>                    </div>
                 </div>
             </div>
             <div class="row">

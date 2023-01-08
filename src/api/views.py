@@ -6,9 +6,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from urllib3 import HTTPResponse
 
-from .forms import CarForm, PostForm, ChangeCarPriceForm
-from .models import Car
-from accounts.models import User
+from .forms import CarForm, PostForm, ChangeCarPriceForm, ContactForm, CommentForm
+from .models import Car, Post, Comment
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 
 @renderer_classes((JSONRenderer, TemplateHTMLRenderer))
@@ -100,6 +101,48 @@ def ChangeCarPrice(request, carid):
                 return render(request, 'my_cars.html', {'form': data},{'cars': Car.objects.filter(owner=user).order_by('-created_at')})
         else:
             return render(request, 'my_cars.html', {'error': 'Not your car'},{'cars': Car.objects.filter(owner=user).order_by('-created_at')})
+    except Exception as e:
+        print(e)
+        return render(request, 'index.html', {'error': 'Something went wrong'})
+
+@renderer_classes((JSONRenderer, TemplateHTMLRenderer))
+def Contact(request):
+    if not User.objects.filter(id=request.user.id).first().is_authenticated:
+        return render(request, 'index.html', {'error': 'You are not logged in'})
+    try:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form.author = request.user
+            return render(request, 'index.html')
+        else:
+            print(form.errors)
+            return render(request, 'contact.html', {'form': form})
+    except Exception as e:
+        print(e)
+        return render(request, 'contact.html', {'form': form})
+
+@renderer_classes((JSONRenderer, TemplateHTMLRenderer))
+def AddComment(request, postid):
+    if not User.objects.filter(id=request.user.id).first().is_authenticated:
+        return render(request, 'index.html', {'error': 'You need to login'})
+    try:
+        post = Post.objects.filter(id=postid).first()
+        try:
+            user = request.user
+            print(post, postid)
+            data = CommentForm(request.POST)
+            comment_text = data['comment'].value()
+            comment = Comment.objects.create(comment=comment_text)
+            user.comments.add(comment)
+            user.save()
+            post.comments.add(comment)
+            post.save()
+
+            return render(request, 'post-details.html', {'posts': [post], 'forms': CommentForm})
+        except Exception as e:
+            print(e)
+            return render(request, 'post-details.html', {'posts': [post], 'forms': CommentForm})
     except Exception as e:
         print(e)
         return render(request, 'index.html', {'error': 'Something went wrong'})

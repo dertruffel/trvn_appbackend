@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
 
+.oval {
+  width: 160px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
 s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
@@ -1297,3 +1304,8 @@ a:focus,
 a:hover {
   color: #f9735b;
 }
+
+
+
+
+

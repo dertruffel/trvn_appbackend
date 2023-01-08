@@ -7,10 +7,11 @@ from api.forms import CarForm
 
 from api.models import Car,Post
 
-from api.forms import PostForm
+from api.forms import PostForm, ContactForm,CommentForm
 
 from accounts.models import User, Event
 from django.template import RequestContext
+
 
 
 def index(request):
@@ -20,7 +21,7 @@ def about(request):
     return render(request, 'about.html')
 
 def contact(request):
-    return render(request, 'contact.html')
+    return render(request, 'contact.html', {'form': ContactForm})
 
 def faq(request):
     return render(request, 'faq.html')
@@ -62,7 +63,7 @@ def posts(request):
     return render(request, 'posts.html', {'posts': Post.objects.all().order_by('-created_at')})
 
 def post_details(request, id):
-    return render(request, 'post-details.html', {'post': Post.objects.get(id=id)})
+    return render(request, 'post-details.html', {'posts': [Post.objects.get(id=id)], 'form': CommentForm })
 
 def my_cars(request):
     user = User.objects.filter(id=request.user.id).first()

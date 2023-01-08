@@ -5,14 +5,14 @@ from decouple import config
 from datetime import timedelta
 from corsheaders.defaults import default_headers
 
-
 # DEBUG = config('DEBUG', default=False, cast=bool)
 DEBUG = True
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-lb(#!ebof#o-ngp-izg12-nhy2@_jm@hs(^41mg!*oe7=9!m^t')
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
-# AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = 'accounts.User'
 QUERYDEBUG = True
+
 
 
 
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'drf_multiple_model',
     'drf_spectacular',
     'rest_framework.authtoken',
+    'embed_video',
     #
 ]
 
@@ -116,6 +117,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 SITE_ID=1
 LANGUAGE_CODE = 'en-us'
 LOCALE_PATHS = (

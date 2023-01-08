@@ -35,6 +35,8 @@ urlpatterns = [
     path('sell-car/<int:id>/', api_views.ChangeOnSaleCar, name='sell-car'),
     path('change-car-price/<int:carid>/', api_views.ChangeCarPrice, name='change_car_price'),
     url(r'calendar/$', cal_views.CalendarView.as_view(), name='calendar'),
+    path('contactform/', api_views.Contact, name='contactform'),
+    path('add-comment/<int:postid>/', api_views.AddComment, name='add-comment'),
 ]
 
 

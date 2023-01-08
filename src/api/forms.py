@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 
-from .models import Car, Post
+from .models import Car, Post, Contact, Comment
 
 
 class PostForm(forms.Form):
@@ -55,3 +55,35 @@ class ChangeCarPriceForm(ModelForm):
     class Meta:
         model = Car
         fields = ('price',)
+
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100, required=True, error_messages={'required': 'Please enter a name'})
+    email = forms.EmailField(required=True, error_messages={'required': 'Please enter an email'})
+    message = forms.CharField(widget=forms.Textarea, required=True, error_messages={'required': 'Please enter a message'})
+
+    def save(self, commit=True):
+        try:
+            contact = Contact(
+                name=self.cleaned_data['name'],
+                email=self.cleaned_data['email'],
+                message=self.cleaned_data['message'],
+            )
+            if commit:
+                contact.save()
+            return contact
+        except Exception as e:
+            print(e)
+            return None
+
+    class Meta:
+        model = Contact
+        fields = ('name', 'email', 'message')
+
+class CommentForm(forms.Form):
+    comment = forms.CharField(max_length=100, required=True, error_messages={'required': 'Please enter a comment'})
+
+
+
+    class Meta:
+        model = Comment
+        fields = ('comment',)
