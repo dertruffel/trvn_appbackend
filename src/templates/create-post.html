@@ -7,17 +7,17 @@
 
         {% csrf_token %}
         <div class="box text-white">
-            {{ form.title.label_tag }}
+            Tytuł
             {{ form.title }}
             {{ form.title.errors }}
         </div>
         <div class="box text-white">
-            {{ form.description.label_tag }}
+            Opis
             {{ form.description }}
             {{ form.description.errors }}
         </div>
         <div class="box text-white">
-            {{ form.image.label_tag }}
+            Zdjęcie
             {{ form.image }}
             {{ form.image.errors }}
         </div>

@@ -58,7 +58,7 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             {% if user.is_authenticated %}
-                                <li> Logged in as {{ user.username }}</li>
+                                <li> Zalogowany jako {{ user.username }}</li>
                             {% endif %}
                             <li><a href="{% url 'index' %}" class="active">Home</a></li>
                             <li><a href="{% url 'cars' %}">DEALER</a></li>
@@ -77,7 +77,7 @@
 
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{% url 'about' %}">O NAS</a>
-                                    <a class="dropdown-item" href="{% url 'blog' %}">Blog</a>
+
                                     <a class="dropdown-item" href="{% url 'team' %}">ZALOGA</a>
                                     <a class="dropdown-item" href="{% url 'testimonials' %}">OPINIE</a>
                                     <a class="dropdown-item" href="{% url 'faq' %}">FAQ</a>
@@ -111,7 +111,7 @@
                     <div class="cta-content">
                         <br>
                         <br>
-                        <h2>Learn more <em>About Us</em></h2>
+                        <h2>Czytaj więcej <em>O nas </em></h2>
                         <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
                     </div>
                 </div>
@@ -137,7 +137,7 @@
                 <section class='tabs-content'>
                   <article id='tabs-1'>
                     <img src="assets/images/about-image-1-940x460.jpg" alt="">
-                    <h4>Our Goals</h4>
+                    <h4>Nasze cele</h4>
 
                     <iframe width="480" height="360" src="https://www.youtube.com/embed/jlqCuHiTst8" title="Grello Hotlap Nordschleife | KÜS Manthey-Racing | NLS 5 Nürburgring" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>                    </div>
 
@@ -149,7 +149,7 @@
                   </article>
                   <article id='tabs-2'>
                     <img src="assets/images/about-image-2-940x460.jpg" alt="">
-                    <h4>Our Work</h4>
+                    <h4>Nasza praca</h4>
                     <p>Integer dapibus, est vel dapibus mattis, sem mauris luctus leo, ac pulvinar quam tortor a velit. Praesent ultrices erat ante, in ultricies augue ultricies faucibus. Nam tellus nibh, ullamcorper at mattis non, rhoncus sed massa. Cras quis pulvinar eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque ut accusantium cum! Ad quisquam, aut praesentium magni pariatur ipsa! Soluta deserunt accusantium repellendus ratione quam hic facere, cupiditate iste obcaecati a, officiis ipsum aspernatur in?</p>
 
@@ -157,7 +157,7 @@
                   </article>
                   <article id='tabs-3'>
                     <img src="assets/images/about-image-3-940x460.jpg" alt="">
-                    <h4>Our Passion</h4>
+                    <h4>Nasza pasja</h4>
                     <p>Fusce laoreet malesuada rhoncus. Donec ultricies diam tortor, id auctor neque posuere sit amet. Aliquam pharetra, augue vel cursus porta, nisi tortor vulputate sapien, id scelerisque felis magna id felis. Proin neque metus, pellentesque pharetra semper vel, accumsan a neque.</p>
 
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aut beatae commodi repudiandae distinctio, magnam blanditiis reiciendis vitae velit voluptatum natus, fugit quis eos dolores!</p>
@@ -177,10 +177,10 @@
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
                     <div class="cta-content">
-                        <h2>Send us a <em>message</em></h2>
+                        <h2>Wyślij nam <em>wiadomość</em></h2>
                         <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula, sit amet dapibus odio augue eget libero. Morbi tempus mauris a nisi luctus imperdiet.</p>
                         <div class="main-button">
-                            <a href="{% url 'contact' %}">Contact us</a>
+                            <a href="{% url 'contact' %}">Skontaktuj się z nami</a>
                         </div>
                     </div>
                 </div>
@@ -195,7 +195,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <p>
-                        Copyright © 2020 Company Name
+                        Copyright © 2022 Truffel
 
                     </p>
                 </div>

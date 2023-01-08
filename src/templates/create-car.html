@@ -7,27 +7,27 @@
 
         {% csrf_token %}
         <div class="box text-white">
-            {{ form.name.label_tag }}
+            Nazwa
             {{ form.name }}
             {{ form.name.errors }}
         </div>
         <div class="box text-white">
-            {{ form.price.label_tag }}
+            Cena
             {{ form.price }}
             {{ form.price.errors }}
         </div>
         <div class="box text-white">
-            {{ form.description.label_tag }}
+            Opis
             {{ form.description }}
             {{ form.description.errors }}
         </div>
         <div class="box text-white">
-            {{ form.image.label_tag }}
+            Zdjęcie
             {{ form.image }}
             {{ form.image.errors }}
         </div>
         <div class="box text-white">
-            {{ form.for_sale.label_tag }}
+            Na sprzedaż?
             {{ form.for_sale }}
             {{ form.for_sale.errors }}
         </div>

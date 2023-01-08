@@ -7,26 +7,26 @@
 
         {% csrf_token %}
         <div class="box text-white">
-        {{ form.username.label_tag }}
+        Nazwa użytkownika
         {{ form.username }}
         {{ form.username.errors }}
         </div>
         <div class="box text-white">
-        {{ form.email.label_tag }}
+        Email
         {{ form.email }}
         {{ form.email.errors }}
         </div>
         <div class="box text-white">
-        {{ form.password1.label_tag }}
+        Hasło
         {{ form.password1 }}
         {{ form.password1.errors }}
         </div>
         <div class="box text-white" >
-        {{ form.password2.label_tag }}
+        Powtórz hasło
         {{ form.password2 }}
         {{ form.password2.errors }}
         </div>
-        <input type="submit" value="submit">
+        <input type="submit" value="Wyślij">
     </div>
 </form>
 {% endblock %}

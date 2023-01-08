@@ -6,12 +6,12 @@
 
         {% csrf_token %}
         <div class="box text-white">
-        {{ form.username.label_tag }}
+        Nazwa użytkownika
         {{ form.username }}
         {{ form.username.errors }}
         </div>
         <div class="box text-white">
-        {{ form.password.label_tag }}
+        Hasło
         {{ form.password }}
         {{ form.password.errors }}
         </div>
