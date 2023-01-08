@@ -35,9 +35,9 @@ services:
     expose:
       - '8001'
     environment: &env
-      DEBUG: 'True'
+      DEBUG: 'False'
       ALLOWED_HOSTS: '*'
-      SECRET_KEY: 'SECRET_KEY'
+      SECRET_KEY: 'NmzvoVNRBduQ.yN*FmgX.tajt8.yTDY!**BuPGdj'
       DATABASE_URL: 'postgres://postgres:postgres@trvn-postgres:5432/trvn'
       REDIS_URL: 'redis://trvn-redis:6379/1'
     deploy:
