@@ -5,8 +5,7 @@ from decouple import config
 from datetime import timedelta
 from corsheaders.defaults import default_headers
 
-# DEBUG = config('DEBUG', default=False, cast=bool)
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-lb(#!ebof#o-ngp-izg12-nhy2@_jm@hs(^41mg!*oe7=9!m^t')
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
