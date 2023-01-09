@@ -15,7 +15,8 @@ class UserManager(BaseUserManager):
             raise ValueError('Password is required.')
 
         email = self.normalize_email(email).lower()
-        user = self.model(email=email, **kwargs)
+        username = kwargs.get('username', None)
+        user = self.model(email=email, username=username, **kwargs)
         user.set_password(password)
         user.save(using=self._db)
         return user
