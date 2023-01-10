@@ -61,7 +61,7 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             {% if user.is_authenticated %}
-                                <li> Zalogowany jako {{ user.username }}</li>
+                                <li class="text-white"> Zalogowany jako {{ user.username }}, W portfelu {{ user.money }}</li>
                             {% endif %}
                             <li><a href="{% url 'index' %}" class="active">Home</a></li>
                             <li><a href="{% url 'cars' %}">DEALER</a></li>
